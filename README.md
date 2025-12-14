@@ -225,3 +225,5 @@ Este proyecto fue desarrollado como parte de un curso de compiladores. Para modi
 ## Licencia
 
 Este proyecto es de código abierto y puede ser usado con fines educativos.
+
+Este texto fue generado de manera automatica por lo que puede contener errores que se corregiran mas adelante.
