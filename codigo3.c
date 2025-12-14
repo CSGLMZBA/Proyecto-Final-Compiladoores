@@ -1,7 +1,6 @@
 int printf();
 int main() 
 {
-   #test login
     int c='';
     printf(" Menu:");
     printf(" A=Añadir a la lista");
@@ -14,6 +13,6 @@ int main()
         else if (c=='B') printf(" Has seleccionado borrar");
         else if (c=='O') printf(" Has seleccionado ordenar");
         else if (c=='I') printf(" Has seleccionado imprimir");
-    } else printf(" No has seleccionado nada");a
+    } else printf(" No has seleccionado nada");
         return 0;
 }

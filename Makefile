@@ -1,5 +1,5 @@
-CC = gcc
-CFLAGS = -lstdc++
+CC = g++
+CFLAGS =
 LEX = flex
 YACC = bison
 

@@ -1,4 +1,4 @@
-TITLE	Problema13.c
+TITLE	codigo2.c
 .686
 .XMM
 .model 	flat
