@@ -14,6 +14,6 @@ int main()
         else if (c=='B') printf(" Has seleccionado borrar");
         else if (c=='O') printf(" Has seleccionado ordenar");
         else if (c=='I') printf(" Has seleccionado imprimir");
-    } else printf(" No has seleccionado nada");
+    } else printf(" No has seleccionado nada");a
         return 0;
 }
