@@ -150,146 +150,7 @@
 #  endif
 # endif
 
-/* Use api.header.include to #include this header
-   instead of duplicating it here.  */
-#ifndef YY_YY_Y_TAB_H_INCLUDED
-# define YY_YY_Y_TAB_H_INCLUDED
-/* Debug traces.  */
-#ifndef YYDEBUG
-# define YYDEBUG 0
-#endif
-#if YYDEBUG
-extern int yydebug;
-#endif
-
-/* Token kinds.  */
-#ifndef YYTOKENTYPE
-# define YYTOKENTYPE
-  enum yytokentype
-  {
-    YYEMPTY = -2,
-    YYEOF = 0,                     /* "end of file"  */
-    YYerror = 256,                 /* error  */
-    YYUNDEF = 257,                 /* "invalid token"  */
-    IDENTIFIER = 258,              /* IDENTIFIER  */
-    CONSTANT = 259,                /* CONSTANT  */
-    STRING_LITERAL = 260,          /* STRING_LITERAL  */
-    SIZEOF = 261,                  /* SIZEOF  */
-    PTR_OP = 262,                  /* PTR_OP  */
-    INC_OP = 263,                  /* INC_OP  */
-    DEC_OP = 264,                  /* DEC_OP  */
-    LEFT_OP = 265,                 /* LEFT_OP  */
-    RIGHT_OP = 266,                /* RIGHT_OP  */
-    LE_OP = 267,                   /* LE_OP  */
-    GE_OP = 268,                   /* GE_OP  */
-    EQ_OP = 269,                   /* EQ_OP  */
-    NE_OP = 270,                   /* NE_OP  */
-    AND_OP = 271,                  /* AND_OP  */
-    OR_OP = 272,                   /* OR_OP  */
-    MUL_ASSIGN = 273,              /* MUL_ASSIGN  */
-    DIV_ASSIGN = 274,              /* DIV_ASSIGN  */
-    MOD_ASSIGN = 275,              /* MOD_ASSIGN  */
-    ADD_ASSIGN = 276,              /* ADD_ASSIGN  */
-    SUB_ASSIGN = 277,              /* SUB_ASSIGN  */
-    LEFT_ASSIGN = 278,             /* LEFT_ASSIGN  */
-    RIGHT_ASSIGN = 279,            /* RIGHT_ASSIGN  */
-    AND_ASSIGN = 280,              /* AND_ASSIGN  */
-    XOR_ASSIGN = 281,              /* XOR_ASSIGN  */
-    OR_ASSIGN = 282,               /* OR_ASSIGN  */
-    TYPE_NAME = 283,               /* TYPE_NAME  */
-    TYPEDEF = 284,                 /* TYPEDEF  */
-    EXTERN = 285,                  /* EXTERN  */
-    STATIC = 286,                  /* STATIC  */
-    AUTO = 287,                    /* AUTO  */
-    REGISTER = 288,                /* REGISTER  */
-    CHAR = 289,                    /* CHAR  */
-    SHORT = 290,                   /* SHORT  */
-    INT = 291,                     /* INT  */
-    LONG = 292,                    /* LONG  */
-    SIGNED = 293,                  /* SIGNED  */
-    UNSIGNED = 294,                /* UNSIGNED  */
-    FLOAT = 295,                   /* FLOAT  */
-    DOUBLE = 296,                  /* DOUBLE  */
-    CONST = 297,                   /* CONST  */
-    VOLATILE = 298,                /* VOLATILE  */
-    VOID = 299,                    /* VOID  */
-    STRUCT = 300,                  /* STRUCT  */
-    UNION = 301,                   /* UNION  */
-    ENUM = 302,                    /* ENUM  */
-    ELLIPSIS = 303,                /* ELLIPSIS  */
-    CASE = 304,                    /* CASE  */
-    DEFAULT = 305,                 /* DEFAULT  */
-    IF = 306,                      /* IF  */
-    ELSE = 307,                    /* ELSE  */
-    SWITCH = 308,                  /* SWITCH  */
-    WHILE = 309,                   /* WHILE  */
-    DO = 310,                      /* DO  */
-    FOR = 311,                     /* FOR  */
-    GOTO = 312,                    /* GOTO  */
-    CONTINUE = 313,                /* CONTINUE  */
-    BREAK = 314,                   /* BREAK  */
-    RETURN = 315,                  /* RETURN  */
-    NO_ELSE = 316                  /* NO_ELSE  */
-  };
-  typedef enum yytokentype yytoken_kind_t;
-#endif
-
-/* Value type.  */
-#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-union YYSTYPE
-{
-#line 61 "ansic.y"
-
-	struct {
-		union 
-		{
-			char cval;
-			long int ival;
-			double dval;
-			char *str;
-			char *name;
-		};
-		int type;
-	} token;
-	VAR_DATA *id_data; // Datos de identificador
-	std::list < VAR_DATA *> *idlist;
-	int scsp;
-	int qual;
-	int typsp;
-	int op;
-	int typ;
-	int asop;
-	int instr;
-	std::list<int> *sqlist;
-	VAR_DATA sym; /* Para poner datos sobre una variable ya declarada */
-	struct {
-		int typq;
-		int level;
-	} pstruc;
-	struct {
-		std::list<int> *breaklist;          /* Para salto fuera de un switch */
-		std::list<int> *nextlist;           /* Para salto a siguiente instruccion */
-		std::list<int> *continuelist;        /* Para salto a inicio de un ciclo  */
-		std::list<GOTO_DATA *> *gotolist;   /* Para salto con GOTO */
-		std::list<CASE_DATA *> *caselist;   /* Para saltos a los case de un switch */
-	}lists;
-
-#line 278 "ansic.tab.c"
-
-};
-typedef union YYSTYPE YYSTYPE;
-# define YYSTYPE_IS_TRIVIAL 1
-# define YYSTYPE_IS_DECLARED 1
-#endif
-
-
-extern YYSTYPE yylval;
-
-
-int yyparse (void);
-
-
-#endif /* !YY_YY_Y_TAB_H_INCLUDED  */
+#include "ansic.tab.h"
 /* Symbol kind.  */
 enum yysymbol_kind_t
 {
@@ -1890,7 +1751,7 @@ yyreduce:
 									(yyval.sym).dimlist = s->dimlist;
 									(yyval.sym).plevel = 0;
 								}
-#line 1894 "ansic.tab.c"
+#line 1755 "ansic.tab.c"
     break;
 
   case 3: /* primary_expression: CONSTANT  */
@@ -1930,7 +1791,7 @@ yyreduce:
 											break;
 									}
 								}
-#line 1934 "ansic.tab.c"
+#line 1795 "ansic.tab.c"
     break;
 
   case 4: /* primary_expression: STRING_LITERAL  */
@@ -1956,7 +1817,7 @@ yyreduce:
 									(yyval.sym).typ = s->typ;
 									(yyval.sym).var = s;
 								}
-#line 1960 "ansic.tab.c"
+#line 1821 "ansic.tab.c"
     break;
 
   case 5: /* primary_expression: '(' expression ')'  */
@@ -1965,7 +1826,7 @@ yyreduce:
 									printf("primary_expression: '(' expression ')'\n");
 									(yyval.sym) = (yyvsp[-1].sym);
 								}
-#line 1969 "ansic.tab.c"
+#line 1830 "ansic.tab.c"
     break;
 
   case 6: /* postfix_expression: primary_expression  */
@@ -1974,7 +1835,7 @@ yyreduce:
 																	printf("postfix_expression: primary_expression\n");
 																	(yyval.sym) = (yyvsp[0].sym);
 																}
-#line 1978 "ansic.tab.c"
+#line 1839 "ansic.tab.c"
     break;
 
   case 7: /* postfix_expression: postfix_expression '[' expression ']'  */
@@ -2020,7 +1881,7 @@ yyreduce:
 																	(yyval.sym).typ |= ARRAY_SPEC;
 																	(yyval.sym).plevel++;	
 																}
-#line 2024 "ansic.tab.c"
+#line 1885 "ansic.tab.c"
     break;
 
   case 8: /* postfix_expression: postfix_expression '(' ')'  */
@@ -2034,7 +1895,7 @@ yyreduce:
 																	gencode(CALL_IR, (yyvsp[-2].sym).var, nullptr, s);
 																	(yyval.sym).var = s;
 																}
-#line 2038 "ansic.tab.c"
+#line 1899 "ansic.tab.c"
     break;
 
   case 9: /* postfix_expression: postfix_expression '(' argument_expression_list ')'  */
@@ -2056,19 +1917,19 @@ yyreduce:
 																	gencode(CALL_IR, (yyvsp[-3].sym).var, s3, s);
 																	(yyval.sym).var = s;	
 																}
-#line 2060 "ansic.tab.c"
+#line 1921 "ansic.tab.c"
     break;
 
   case 10: /* postfix_expression: postfix_expression '.' IDENTIFIER  */
 #line 316 "ansic.y"
                                                                                                 {printf("postfix_expression: postfix_expression '.' IDENTIFIER\n");}
-#line 2066 "ansic.tab.c"
+#line 1927 "ansic.tab.c"
     break;
 
   case 11: /* postfix_expression: postfix_expression PTR_OP IDENTIFIER  */
 #line 317 "ansic.y"
                                                                                         {printf("postfix_expression: postfix_expression PTR_OP IDENTIFIER\n");}
-#line 2072 "ansic.tab.c"
+#line 1933 "ansic.tab.c"
     break;
 
   case 12: /* postfix_expression: postfix_expression INC_OP  */
@@ -2093,7 +1954,7 @@ yyreduce:
 																		yyerror("Error: Operand of increment operator must be an variable\n");
 
 																}
-#line 2097 "ansic.tab.c"
+#line 1958 "ansic.tab.c"
     break;
 
   case 13: /* postfix_expression: postfix_expression DEC_OP  */
@@ -2118,7 +1979,7 @@ yyreduce:
 																	else
 																		yyerror("Error: Operand of increment operator must be an variable\n");
 																}
-#line 2122 "ansic.tab.c"
+#line 1983 "ansic.tab.c"
     break;
 
   case 14: /* argument_expression_list: assignment_expression  */
@@ -2133,7 +1994,7 @@ yyreduce:
 																		(yyval.sym).typ = 0;
 																		(yyval.sym).arglist = newlist;
 																	}
-#line 2137 "ansic.tab.c"
+#line 1998 "ansic.tab.c"
     break;
 
   case 15: /* argument_expression_list: argument_expression_list ',' assignment_expression  */
@@ -2145,7 +2006,7 @@ yyreduce:
 																		(yyval.sym) = (yyvsp[-2].sym);
 																		(yyval.sym).arglist->push_back(newstruc);
 																	}
-#line 2149 "ansic.tab.c"
+#line 2010 "ansic.tab.c"
     break;
 
   case 16: /* unary_expression: postfix_expression  */
@@ -2154,7 +2015,7 @@ yyreduce:
 												printf("unary_expression: postfix_expression\n");
 												(yyval.sym) = (yyvsp[0].sym);	
 											}
-#line 2158 "ansic.tab.c"
+#line 2019 "ansic.tab.c"
     break;
 
   case 17: /* unary_expression: INC_OP unary_expression  */
@@ -2173,7 +2034,7 @@ yyreduce:
 												else
 													yyerror("Error: Operand of increment operator must be an variable name\n");
 											}
-#line 2177 "ansic.tab.c"
+#line 2038 "ansic.tab.c"
     break;
 
   case 18: /* unary_expression: DEC_OP unary_expression  */
@@ -2192,7 +2053,7 @@ yyreduce:
 												else
 													yyerror("Error: Operand of increment operator must be an variable name\n");
 											}
-#line 2196 "ansic.tab.c"
+#line 2057 "ansic.tab.c"
     break;
 
   case 19: /* unary_expression: unary_operator cast_expression  */
@@ -2247,7 +2108,7 @@ yyreduce:
 												(yyval.sym).name = name;
 												(yyval.sym).var = s;	
 											}
-#line 2251 "ansic.tab.c"
+#line 2112 "ansic.tab.c"
     break;
 
   case 20: /* unary_expression: SIZEOF unary_expression  */
@@ -2266,7 +2127,7 @@ yyreduce:
 												(yyval.sym).typ = INTVAL | CONST_SPEC;
 												(yyval.sym).var = s;
 											}
-#line 2270 "ansic.tab.c"
+#line 2131 "ansic.tab.c"
     break;
 
   case 21: /* unary_expression: SIZEOF '(' type_name ')'  */
@@ -2285,7 +2146,7 @@ yyreduce:
 												(yyval.sym).typ = INTVAL | CONST_SPEC;
 												(yyval.sym).var = s;
 											}
-#line 2289 "ansic.tab.c"
+#line 2150 "ansic.tab.c"
     break;
 
   case 22: /* unary_operator: '&'  */
@@ -2294,7 +2155,7 @@ yyreduce:
 												printf("unary_operator: '&'\n");
 												(yyval.op) = ADDR_OP;
 											}
-#line 2298 "ansic.tab.c"
+#line 2159 "ansic.tab.c"
     break;
 
   case 23: /* unary_operator: '*'  */
@@ -2303,7 +2164,7 @@ yyreduce:
 												printf("unary_operator: '*'\n");
 												(yyval.op) = DEREF_OP;
 											}
-#line 2307 "ansic.tab.c"
+#line 2168 "ansic.tab.c"
     break;
 
   case 24: /* unary_operator: '+'  */
@@ -2312,7 +2173,7 @@ yyreduce:
 												printf("unary_operator: '+'\n");
 												(yyval.op) = PLUS_OP;
 											}
-#line 2316 "ansic.tab.c"
+#line 2177 "ansic.tab.c"
     break;
 
   case 25: /* unary_operator: '-'  */
@@ -2321,7 +2182,7 @@ yyreduce:
 												printf("unary_operator: '-'\n");
 												(yyval.op) = MINUS_OP;
 											}
-#line 2325 "ansic.tab.c"
+#line 2186 "ansic.tab.c"
     break;
 
   case 26: /* unary_operator: '~'  */
@@ -2330,7 +2191,7 @@ yyreduce:
 												printf("unary_operator: '~'\n");
 												(yyval.op) = TWOCOMP_OP;
 											}
-#line 2334 "ansic.tab.c"
+#line 2195 "ansic.tab.c"
     break;
 
   case 27: /* unary_operator: '!'  */
@@ -2339,7 +2200,7 @@ yyreduce:
 												printf("unary_operator: '!'\n");
 												(yyval.op) = NOT_OP;
 											}
-#line 2343 "ansic.tab.c"
+#line 2204 "ansic.tab.c"
     break;
 
   case 28: /* cast_expression: unary_expression  */
@@ -2359,7 +2220,7 @@ yyreduce:
 													(yyval.sym).var = s;
 												}
 											}
-#line 2363 "ansic.tab.c"
+#line 2224 "ansic.tab.c"
     break;
 
   case 29: /* cast_expression: '(' type_name ')' cast_expression  */
@@ -2392,7 +2253,7 @@ yyreduce:
 												(yyval.sym).typ = s->typ;
 												(yyval.sym).var = s;	
 											}
-#line 2396 "ansic.tab.c"
+#line 2257 "ansic.tab.c"
     break;
 
   case 30: /* multiplicative_expression: cast_expression  */
@@ -2401,7 +2262,7 @@ yyreduce:
 																printf("multiplicative_expression: cast_expression\n");
 																(yyval.sym) = (yyvsp[0].sym);	
 															}
-#line 2405 "ansic.tab.c"
+#line 2266 "ansic.tab.c"
     break;
 
   case 31: /* multiplicative_expression: multiplicative_expression '*' cast_expression  */
@@ -2415,7 +2276,7 @@ yyreduce:
 																(yyval.sym).name = name;
 																(yyval.sym).var = s;	
 															}
-#line 2419 "ansic.tab.c"
+#line 2280 "ansic.tab.c"
     break;
 
   case 32: /* multiplicative_expression: multiplicative_expression '/' cast_expression  */
@@ -2429,7 +2290,7 @@ yyreduce:
 																(yyval.sym).name = name;
 																(yyval.sym).var = s;
 															}
-#line 2433 "ansic.tab.c"
+#line 2294 "ansic.tab.c"
     break;
 
   case 33: /* multiplicative_expression: multiplicative_expression '%' cast_expression  */
@@ -2443,7 +2304,7 @@ yyreduce:
 																(yyval.sym).name = name;
 																(yyval.sym).var = s;
 															}
-#line 2447 "ansic.tab.c"
+#line 2308 "ansic.tab.c"
     break;
 
   case 34: /* additive_expression: multiplicative_expression  */
@@ -2452,7 +2313,7 @@ yyreduce:
 																printf("additive_expression: multiplicative_expression	\n");
 																(yyval.sym) = (yyvsp[0].sym);	
 															}
-#line 2456 "ansic.tab.c"
+#line 2317 "ansic.tab.c"
     break;
 
   case 35: /* additive_expression: additive_expression '+' multiplicative_expression  */
@@ -2466,7 +2327,7 @@ yyreduce:
 																(yyval.sym).name = name;
 																(yyval.sym).var = s;
 															}
-#line 2470 "ansic.tab.c"
+#line 2331 "ansic.tab.c"
     break;
 
   case 36: /* additive_expression: additive_expression '-' multiplicative_expression  */
@@ -2480,7 +2341,7 @@ yyreduce:
 																(yyval.sym).name = name;
 																(yyval.sym).var = s;
 															}
-#line 2484 "ansic.tab.c"
+#line 2345 "ansic.tab.c"
     break;
 
   case 37: /* shift_expression: additive_expression  */
@@ -2489,19 +2350,19 @@ yyreduce:
 																printf("shift_expression: additive_expression\n");
 																(yyval.sym) = (yyvsp[0].sym);	
 															}
-#line 2493 "ansic.tab.c"
+#line 2354 "ansic.tab.c"
     break;
 
   case 38: /* shift_expression: shift_expression LEFT_OP additive_expression  */
 #line 630 "ansic.y"
                                                                         {printf("shift_expression: shift_expression LEFT_OP additive_expression\n");}
-#line 2499 "ansic.tab.c"
+#line 2360 "ansic.tab.c"
     break;
 
   case 39: /* shift_expression: shift_expression RIGHT_OP additive_expression  */
 #line 631 "ansic.y"
                                                                         {printf("shift_expression: shift_expression RIGHT_OP additive_expression\n");}
-#line 2505 "ansic.tab.c"
+#line 2366 "ansic.tab.c"
     break;
 
   case 40: /* relational_expression: shift_expression  */
@@ -2510,7 +2371,7 @@ yyreduce:
 																printf("relational_expression: shift_expression\n");
 																(yyval.sym) = (yyvsp[0].sym);	
 															}
-#line 2514 "ansic.tab.c"
+#line 2375 "ansic.tab.c"
     break;
 
   case 41: /* relational_expression: relational_expression '<' shift_expression  */
@@ -2523,7 +2384,7 @@ yyreduce:
 																(yyval.sym).falselist = makelist (nextinstr);
 																gencode(GOTO_IR);
 															}
-#line 2527 "ansic.tab.c"
+#line 2388 "ansic.tab.c"
     break;
 
   case 42: /* relational_expression: relational_expression '>' shift_expression  */
@@ -2536,7 +2397,7 @@ yyreduce:
 																(yyval.sym).falselist = makelist (nextinstr);
 																gencode(GOTO_IR);
 															}
-#line 2540 "ansic.tab.c"
+#line 2401 "ansic.tab.c"
     break;
 
   case 43: /* relational_expression: relational_expression LE_OP shift_expression  */
@@ -2549,7 +2410,7 @@ yyreduce:
 																(yyval.sym).falselist = makelist (nextinstr);
 																gencode(GOTO_IR);
 															}
-#line 2553 "ansic.tab.c"
+#line 2414 "ansic.tab.c"
     break;
 
   case 44: /* relational_expression: relational_expression GE_OP shift_expression  */
@@ -2562,7 +2423,7 @@ yyreduce:
 																(yyval.sym).falselist = makelist (nextinstr);
 																gencode(GOTO_IR);
 															}
-#line 2566 "ansic.tab.c"
+#line 2427 "ansic.tab.c"
     break;
 
   case 45: /* equality_expression: relational_expression  */
@@ -2571,7 +2432,7 @@ yyreduce:
 																printf("equality_expression: relational_expression	\n");
 																(yyval.sym) = (yyvsp[0].sym);
 															}
-#line 2575 "ansic.tab.c"
+#line 2436 "ansic.tab.c"
     break;
 
   case 46: /* equality_expression: equality_expression EQ_OP relational_expression  */
@@ -2584,7 +2445,7 @@ yyreduce:
 																(yyval.sym).falselist = makelist (nextinstr);
 																gencode(GOTO_IR);
 															}
-#line 2588 "ansic.tab.c"
+#line 2449 "ansic.tab.c"
     break;
 
   case 47: /* equality_expression: equality_expression NE_OP relational_expression  */
@@ -2597,7 +2458,7 @@ yyreduce:
 																(yyval.sym).falselist = makelist (nextinstr);
 																gencode(GOTO_IR);
 															}
-#line 2601 "ansic.tab.c"
+#line 2462 "ansic.tab.c"
     break;
 
   case 48: /* and_expression: equality_expression  */
@@ -2606,7 +2467,7 @@ yyreduce:
 																printf("and_expression: equality_expression\n");
 																(yyval.sym) = (yyvsp[0].sym);
 															}
-#line 2610 "ansic.tab.c"
+#line 2471 "ansic.tab.c"
     break;
 
   case 49: /* and_expression: and_expression '&' equality_expression  */
@@ -2620,7 +2481,7 @@ yyreduce:
 																(yyval.sym).name = name;
 																(yyval.sym).var = s;
 															}
-#line 2624 "ansic.tab.c"
+#line 2485 "ansic.tab.c"
     break;
 
   case 50: /* exclusive_or_expression: and_expression  */
@@ -2629,7 +2490,7 @@ yyreduce:
 																printf("exclusive_or_expression: and_expression\n");
 																(yyval.sym) = (yyvsp[0].sym);	
 															}
-#line 2633 "ansic.tab.c"
+#line 2494 "ansic.tab.c"
     break;
 
   case 51: /* exclusive_or_expression: exclusive_or_expression '^' and_expression  */
@@ -2643,7 +2504,7 @@ yyreduce:
 																(yyval.sym).name = name;
 																(yyval.sym).var = s;
 															}
-#line 2647 "ansic.tab.c"
+#line 2508 "ansic.tab.c"
     break;
 
   case 52: /* inclusive_or_expression: exclusive_or_expression  */
@@ -2652,7 +2513,7 @@ yyreduce:
 																printf("inclusive_or_expression: exclusive_or_expression\n");
 																(yyval.sym) = (yyvsp[0].sym);	
 															}
-#line 2656 "ansic.tab.c"
+#line 2517 "ansic.tab.c"
     break;
 
   case 53: /* inclusive_or_expression: inclusive_or_expression '|' exclusive_or_expression  */
@@ -2666,7 +2527,7 @@ yyreduce:
 																(yyval.sym).name = name;
 																(yyval.sym).var = s;
 															}
-#line 2670 "ansic.tab.c"
+#line 2531 "ansic.tab.c"
     break;
 
   case 54: /* logical_and_expression: inclusive_or_expression  */
@@ -2675,7 +2536,7 @@ yyreduce:
 																printf("logical_and_expression: inclusive_or_expression	\n");
 																(yyval.sym) = (yyvsp[0].sym);	
 															}
-#line 2679 "ansic.tab.c"
+#line 2540 "ansic.tab.c"
     break;
 
   case 55: /* logical_and_expression: logical_and_expression AND_OP N inclusive_or_expression  */
@@ -2688,7 +2549,7 @@ yyreduce:
 																	(yyval.sym).falselist->merge(*((yyvsp[0].sym).falselist));
 																	(yyval.sym).typ = INTVAL;
 																}
-#line 2692 "ansic.tab.c"
+#line 2553 "ansic.tab.c"
     break;
 
   case 56: /* logical_or_expression: logical_and_expression  */
@@ -2697,7 +2558,7 @@ yyreduce:
 																printf("logical_or_expression: logical_and_expression	\n");
 																(yyval.sym) = (yyvsp[0].sym);	
 															}
-#line 2701 "ansic.tab.c"
+#line 2562 "ansic.tab.c"
     break;
 
   case 57: /* logical_or_expression: logical_or_expression OR_OP N logical_and_expression  */
@@ -2710,7 +2571,7 @@ yyreduce:
 																(yyval.sym).truelist->merge(*((yyvsp[0].sym).truelist));
 																(yyval.sym).typ = INTVAL;
 															}
-#line 2714 "ansic.tab.c"
+#line 2575 "ansic.tab.c"
     break;
 
   case 58: /* M: %empty  */
@@ -2719,7 +2580,7 @@ yyreduce:
 																(yyval.lists).nextlist = makelist(nextinstr);
 																gencode(GOTO_IR);
 															}
-#line 2723 "ansic.tab.c"
+#line 2584 "ansic.tab.c"
     break;
 
   case 59: /* conditional_expression: logical_or_expression  */
@@ -2728,7 +2589,7 @@ yyreduce:
 																				printf("conditional_expression: logical_or_expression	\n");
 																				(yyval.sym) = (yyvsp[0].sym);
 																			}
-#line 2732 "ansic.tab.c"
+#line 2593 "ansic.tab.c"
     break;
 
   case 60: /* $@1: %empty  */
@@ -2739,7 +2600,7 @@ yyreduce:
 																				gencode(STORE_IR, (yyvsp[-1].sym).var, NULL, s);
 																				(yyvsp[-1].sym).var = s;
 																			}
-#line 2743 "ansic.tab.c"
+#line 2604 "ansic.tab.c"
     break;
 
   case 61: /* conditional_expression: logical_or_expression '?' N expression ':' $@1 M N conditional_expression  */
@@ -2754,7 +2615,7 @@ yyreduce:
 																				(yyval.sym).truelist = nullptr;
 																				(yyval.sym).falselist = nullptr;	
 																			}
-#line 2758 "ansic.tab.c"
+#line 2619 "ansic.tab.c"
     break;
 
   case 62: /* assignment_expression: conditional_expression  */
@@ -2763,7 +2624,7 @@ yyreduce:
 																		printf("assignment_expression: conditional_expression\n");
 																		(yyval.sym) = (yyvsp[0].sym);
 																	}
-#line 2767 "ansic.tab.c"
+#line 2628 "ansic.tab.c"
     break;
 
   case 63: /* assignment_expression: unary_expression assignment_operator assignment_expression  */
@@ -3013,7 +2874,7 @@ yyreduce:
 																				break;
 																		}	
 																	}
-#line 3017 "ansic.tab.c"
+#line 2878 "ansic.tab.c"
     break;
 
   case 64: /* assignment_operator: '='  */
@@ -3022,7 +2883,7 @@ yyreduce:
 								printf("assignment_operator: '='\n");
 								(yyval.asop) = EQ_ASSIGN_OP;
 							}
-#line 3026 "ansic.tab.c"
+#line 2887 "ansic.tab.c"
     break;
 
   case 65: /* assignment_operator: MUL_ASSIGN  */
@@ -3031,7 +2892,7 @@ yyreduce:
 								printf("assignment_operator: MUL_ASSIGN\n");
 								(yyval.asop) = MUL_ASSIGN_OP;
 							}
-#line 3035 "ansic.tab.c"
+#line 2896 "ansic.tab.c"
     break;
 
   case 66: /* assignment_operator: DIV_ASSIGN  */
@@ -3040,7 +2901,7 @@ yyreduce:
 								printf("assignment_operator: DIV_ASSIGN\n");
 								(yyval.asop) = DIV_ASSIGN_OP;
 							}
-#line 3044 "ansic.tab.c"
+#line 2905 "ansic.tab.c"
     break;
 
   case 67: /* assignment_operator: MOD_ASSIGN  */
@@ -3049,7 +2910,7 @@ yyreduce:
 								printf("assignment_operator: MOD_ASSIGN\n");
 								(yyval.asop) = MOD_ASSIGN_OP;
 							}
-#line 3053 "ansic.tab.c"
+#line 2914 "ansic.tab.c"
     break;
 
   case 68: /* assignment_operator: ADD_ASSIGN  */
@@ -3058,7 +2919,7 @@ yyreduce:
 								printf("assignment_operator: ADD_ASSIGN\n");
 								(yyval.asop) = ADD_ASSIGN_OP;
 							}
-#line 3062 "ansic.tab.c"
+#line 2923 "ansic.tab.c"
     break;
 
   case 69: /* assignment_operator: SUB_ASSIGN  */
@@ -3067,7 +2928,7 @@ yyreduce:
 								printf("assignment_operator: SUB_ASSIGN\n");
 								(yyval.asop) = SUB_ASSIGN_OP;
 							}
-#line 3071 "ansic.tab.c"
+#line 2932 "ansic.tab.c"
     break;
 
   case 70: /* assignment_operator: LEFT_ASSIGN  */
@@ -3076,7 +2937,7 @@ yyreduce:
 								printf("assignment_operator: LEFT_ASSIGN\n");
 								(yyval.asop) = LEFT_ASSIGN_OP;
 							}
-#line 3080 "ansic.tab.c"
+#line 2941 "ansic.tab.c"
     break;
 
   case 71: /* assignment_operator: RIGHT_ASSIGN  */
@@ -3085,7 +2946,7 @@ yyreduce:
 								printf("assignment_operator: RIGHT_ASSIGN\n");
 								(yyval.asop) = RIGHT_ASSIGN_OP;
 							}
-#line 3089 "ansic.tab.c"
+#line 2950 "ansic.tab.c"
     break;
 
   case 72: /* assignment_operator: AND_ASSIGN  */
@@ -3094,7 +2955,7 @@ yyreduce:
 								printf("assignment_operator: AND_ASSIGN\n");
 								(yyval.asop) = AND_ASSIGN_OP;
 							}
-#line 3098 "ansic.tab.c"
+#line 2959 "ansic.tab.c"
     break;
 
   case 73: /* assignment_operator: XOR_ASSIGN  */
@@ -3103,7 +2964,7 @@ yyreduce:
 								printf("assignment_operator: XOR_ASSIGN\n");
 								(yyval.asop) = XOR_ASSIGN_OP;
 							}
-#line 3107 "ansic.tab.c"
+#line 2968 "ansic.tab.c"
     break;
 
   case 74: /* assignment_operator: OR_ASSIGN  */
@@ -3112,7 +2973,7 @@ yyreduce:
 								printf("assignment_operator: OR_ASSIGN	\n");
 								(yyval.asop) = OR_ASSIGN_OP;
 							}
-#line 3116 "ansic.tab.c"
+#line 2977 "ansic.tab.c"
     break;
 
   case 75: /* expression: assignment_expression  */
@@ -3121,7 +2982,7 @@ yyreduce:
 													printf("expression: assignment_expression\n");
 													(yyval.sym) = (yyvsp[0].sym);
 												}
-#line 3125 "ansic.tab.c"
+#line 2986 "ansic.tab.c"
     break;
 
   case 76: /* expression: expression ',' assignment_expression  */
@@ -3130,7 +2991,7 @@ yyreduce:
 													printf("expression: expression ',' assignment_expression\n");
 													(yyval.sym) = (yyvsp[-2].sym);
 												}
-#line 3134 "ansic.tab.c"
+#line 2995 "ansic.tab.c"
     break;
 
   case 77: /* constant_expression: conditional_expression  */
@@ -3139,13 +3000,13 @@ yyreduce:
 													printf("assignment_operator: conditional_expression\n");
 													(yyval.sym) = (yyvsp[0].sym);	
 												}
-#line 3143 "ansic.tab.c"
+#line 3004 "ansic.tab.c"
     break;
 
   case 78: /* declaration: declaration_specifiers ';'  */
 #line 1120 "ansic.y"
                                                                                         {printf("declaration: declaration_specifiers ';'\n");}
-#line 3149 "ansic.tab.c"
+#line 3010 "ansic.tab.c"
     break;
 
   case 79: /* declaration: declaration_specifiers init_declarator_list ';'  */
@@ -3180,7 +3041,7 @@ yyreduce:
 																}
 
 															}
-#line 3184 "ansic.tab.c"
+#line 3045 "ansic.tab.c"
     break;
 
   case 80: /* declaration_specifiers: storage_class_specifier  */
@@ -3191,7 +3052,7 @@ yyreduce:
 																newlist->push_back((yyvsp[0].scsp));
 																(yyval.sqlist)=newlist;
 															}
-#line 3195 "ansic.tab.c"
+#line 3056 "ansic.tab.c"
     break;
 
   case 81: /* declaration_specifiers: storage_class_specifier declaration_specifiers  */
@@ -3201,7 +3062,7 @@ yyreduce:
 																(yyval.sqlist) = (yyvsp[0].sqlist);
 																(yyval.sqlist)->push_back((yyvsp[-1].scsp));
 															}
-#line 3205 "ansic.tab.c"
+#line 3066 "ansic.tab.c"
     break;
 
   case 82: /* declaration_specifiers: type_specifier  */
@@ -3212,7 +3073,7 @@ yyreduce:
 																newlist->push_back((yyvsp[0].typsp));
 																(yyval.sqlist)=newlist;
 															}
-#line 3216 "ansic.tab.c"
+#line 3077 "ansic.tab.c"
     break;
 
   case 83: /* declaration_specifiers: type_specifier declaration_specifiers  */
@@ -3222,7 +3083,7 @@ yyreduce:
 																(yyval.sqlist) = (yyvsp[0].sqlist);
 																(yyval.sqlist)->push_back((yyvsp[-1].typsp));
 															}
-#line 3226 "ansic.tab.c"
+#line 3087 "ansic.tab.c"
     break;
 
   case 84: /* declaration_specifiers: type_qualifier  */
@@ -3233,7 +3094,7 @@ yyreduce:
 																newlist->push_back((yyvsp[0].qual));
 																(yyval.sqlist)=newlist;
 															}
-#line 3237 "ansic.tab.c"
+#line 3098 "ansic.tab.c"
     break;
 
   case 85: /* declaration_specifiers: type_qualifier declaration_specifiers  */
@@ -3243,7 +3104,7 @@ yyreduce:
 																(yyval.sqlist) = (yyvsp[0].sqlist);
 																(yyval.sqlist)->push_back((yyvsp[-1].qual));
 															}
-#line 3247 "ansic.tab.c"
+#line 3108 "ansic.tab.c"
     break;
 
   case 86: /* init_declarator_list: init_declarator  */
@@ -3255,7 +3116,7 @@ yyreduce:
 														newlist->push_back(newstruc);
 														(yyval.idlist) = newlist;
 													}
-#line 3259 "ansic.tab.c"
+#line 3120 "ansic.tab.c"
     break;
 
   case 87: /* init_declarator_list: init_declarator_list ',' init_declarator  */
@@ -3265,7 +3126,7 @@ yyreduce:
 														(yyval.idlist)=(yyvsp[-2].idlist);
 														(yyval.idlist)->push_back((yyvsp[0].id_data));
 													}
-#line 3269 "ansic.tab.c"
+#line 3130 "ansic.tab.c"
     break;
 
   case 88: /* init_declarator: declarator  */
@@ -3274,7 +3135,7 @@ yyreduce:
 											printf("init_declarator: declarator\n");
 											(yyval.id_data) = (yyvsp[0].id_data);
 										}
-#line 3278 "ansic.tab.c"
+#line 3139 "ansic.tab.c"
     break;
 
   case 89: /* init_declarator: declarator '=' initializer  */
@@ -3285,7 +3146,7 @@ yyreduce:
 											(yyval.id_data)->init = 1;
 											(yyval.id_data)->var = (yyvsp[0].sym).var;
 										}
-#line 3289 "ansic.tab.c"
+#line 3150 "ansic.tab.c"
     break;
 
   case 90: /* storage_class_specifier: TYPEDEF  */
@@ -3294,7 +3155,7 @@ yyreduce:
 									printf("storage_class_specifier: TYPEDEF\n");
 									(yyval.scsp)=TYPEDEF_SPEC;
 								}
-#line 3298 "ansic.tab.c"
+#line 3159 "ansic.tab.c"
     break;
 
   case 91: /* storage_class_specifier: EXTERN  */
@@ -3303,7 +3164,7 @@ yyreduce:
 									printf("storage_class_specifier: EXTERN\n");
 									(yyval.scsp)= EXTERN_SPEC;
 								}
-#line 3307 "ansic.tab.c"
+#line 3168 "ansic.tab.c"
     break;
 
   case 92: /* storage_class_specifier: STATIC  */
@@ -3312,7 +3173,7 @@ yyreduce:
 									printf("storage_class_specifier: STATIC\n");
 									(yyval.scsp) = STATIC_SPEC;
 								}
-#line 3316 "ansic.tab.c"
+#line 3177 "ansic.tab.c"
     break;
 
   case 93: /* storage_class_specifier: AUTO  */
@@ -3321,7 +3182,7 @@ yyreduce:
 									printf("storage_class_specifier: AUTO\n");
 									(yyval.scsp) = AUTO_SPEC;
 								}
-#line 3325 "ansic.tab.c"
+#line 3186 "ansic.tab.c"
     break;
 
   case 94: /* storage_class_specifier: REGISTER  */
@@ -3330,7 +3191,7 @@ yyreduce:
 									printf("storage_class_specifier: REGISTER\n");
 									(yyval.scsp) = REGISTER_SPEC;
 								}
-#line 3334 "ansic.tab.c"
+#line 3195 "ansic.tab.c"
     break;
 
   case 95: /* type_specifier: VOID  */
@@ -3339,7 +3200,7 @@ yyreduce:
 										printf("type_specifier: VOID\n");
 										(yyval.typsp) = VOID_SPEC;
 									}
-#line 3343 "ansic.tab.c"
+#line 3204 "ansic.tab.c"
     break;
 
   case 96: /* type_specifier: CHAR  */
@@ -3348,7 +3209,7 @@ yyreduce:
 										printf("type_specifier: CHAR\n");
 										(yyval.typsp) = CHAR_SPEC;
 									}
-#line 3352 "ansic.tab.c"
+#line 3213 "ansic.tab.c"
     break;
 
   case 97: /* type_specifier: SHORT  */
@@ -3357,7 +3218,7 @@ yyreduce:
 										printf("type_specifier: SHORT\n");
 										(yyval.typsp) = SHORT_SPEC;
 									}
-#line 3361 "ansic.tab.c"
+#line 3222 "ansic.tab.c"
     break;
 
   case 98: /* type_specifier: INT  */
@@ -3366,7 +3227,7 @@ yyreduce:
 										printf("type_specifier: INT\n");
 										(yyval.typsp) = INT_SPEC;
 									}
-#line 3370 "ansic.tab.c"
+#line 3231 "ansic.tab.c"
     break;
 
   case 99: /* type_specifier: LONG  */
@@ -3375,7 +3236,7 @@ yyreduce:
 										printf("type_specifier: LONG\n");
 										(yyval.typsp) = LONG_SPEC;
 									}
-#line 3379 "ansic.tab.c"
+#line 3240 "ansic.tab.c"
     break;
 
   case 100: /* type_specifier: FLOAT  */
@@ -3384,7 +3245,7 @@ yyreduce:
 										printf("type_specifier: FLOAT\n");
 										(yyval.typsp) = FLOAT_SPEC;
 									}
-#line 3388 "ansic.tab.c"
+#line 3249 "ansic.tab.c"
     break;
 
   case 101: /* type_specifier: DOUBLE  */
@@ -3393,7 +3254,7 @@ yyreduce:
 										printf("type_specifier: DOUBLE\n");
 										(yyval.typsp) = DOUBLE_SPEC;
 									}
-#line 3397 "ansic.tab.c"
+#line 3258 "ansic.tab.c"
     break;
 
   case 102: /* type_specifier: SIGNED  */
@@ -3402,7 +3263,7 @@ yyreduce:
 										printf("type_specifier: SIGNED\n");
 										(yyval.typsp) = SIGNED_SPEC;
 									}
-#line 3406 "ansic.tab.c"
+#line 3267 "ansic.tab.c"
     break;
 
   case 103: /* type_specifier: UNSIGNED  */
@@ -3411,7 +3272,7 @@ yyreduce:
 										printf("type_specifier: UNSIGNED\n");
 										(yyval.typsp) = UNSIGNED_SPEC;
 									}
-#line 3415 "ansic.tab.c"
+#line 3276 "ansic.tab.c"
     break;
 
   case 104: /* type_specifier: struct_or_union_specifier  */
@@ -3420,7 +3281,7 @@ yyreduce:
 										printf("type_specifier: struct_or_union_specifier\n");
 										
 									}
-#line 3424 "ansic.tab.c"
+#line 3285 "ansic.tab.c"
     break;
 
   case 105: /* type_specifier: enum_specifier  */
@@ -3429,7 +3290,7 @@ yyreduce:
 										printf("type_specifier: enum_specifier\n");
 										(yyval.typsp) = ENUM_SPEC;
 									}
-#line 3433 "ansic.tab.c"
+#line 3294 "ansic.tab.c"
     break;
 
   case 106: /* type_specifier: TYPE_NAME  */
@@ -3438,55 +3299,55 @@ yyreduce:
 										printf("type_specifier: TYPE_NAME\n");
 										(yyval.typsp) = TYPENAME_SPEC;
 									}
-#line 3442 "ansic.tab.c"
+#line 3303 "ansic.tab.c"
     break;
 
   case 107: /* struct_or_union_specifier: struct_or_union IDENTIFIER '{' struct_declaration_list '}'  */
 #line 1292 "ansic.y"
                                                                         {printf("struct_or_union_specifier: struct_or_union IDENTIFIER '{' struct_declaration_list '}'\n");}
-#line 3448 "ansic.tab.c"
+#line 3309 "ansic.tab.c"
     break;
 
   case 108: /* struct_or_union_specifier: struct_or_union '{' struct_declaration_list '}'  */
 #line 1293 "ansic.y"
                                                                                         {printf("struct_or_union_specifier: struct_or_union '{' struct_declaration_list '}'	\n");}
-#line 3454 "ansic.tab.c"
+#line 3315 "ansic.tab.c"
     break;
 
   case 109: /* struct_or_union_specifier: struct_or_union IDENTIFIER  */
 #line 1294 "ansic.y"
                                                                                                         {printf("struct_or_union_specifier: struct_or_union IDENTIFIER\n");}
-#line 3460 "ansic.tab.c"
+#line 3321 "ansic.tab.c"
     break;
 
   case 110: /* struct_or_union: STRUCT  */
 #line 1298 "ansic.y"
                                                                                                                                 {printf("struct_or_union_specifier: STRUCT\n");}
-#line 3466 "ansic.tab.c"
+#line 3327 "ansic.tab.c"
     break;
 
   case 111: /* struct_or_union: UNION  */
 #line 1299 "ansic.y"
                                                                                                                                 {printf("struct_or_union_specifier: UNION\n");}
-#line 3472 "ansic.tab.c"
+#line 3333 "ansic.tab.c"
     break;
 
   case 112: /* struct_declaration_list: struct_declaration  */
 #line 1303 "ansic.y"
                                                                                                                 {printf("struct_declaration_list: struct_declaration\n");}
-#line 3478 "ansic.tab.c"
+#line 3339 "ansic.tab.c"
     break;
 
   case 113: /* struct_declaration_list: struct_declaration_list struct_declaration  */
 #line 1304 "ansic.y"
                                                                                         {printf("struct_declaration_list: struct_declaration_list struct_declaration\n");}
-#line 3484 "ansic.tab.c"
+#line 3345 "ansic.tab.c"
     break;
 
   case 114: /* struct_declaration: specifier_qualifier_list struct_declarator_list ';'  */
 #line 1308 "ansic.y"
                                                                                 {printf("struct_declaration: specifier_qualifier_list struct_declarator_list ';'\n");}
-#line 3490 "ansic.tab.c"
+#line 3351 "ansic.tab.c"
     break;
 
   case 115: /* specifier_qualifier_list: type_specifier specifier_qualifier_list  */
@@ -3496,7 +3357,7 @@ yyreduce:
 																		(yyval.sqlist)=(yyvsp[0].sqlist);
 																		(yyval.sqlist)->push_back((yyvsp[-1].typsp));
 																	}
-#line 3500 "ansic.tab.c"
+#line 3361 "ansic.tab.c"
     break;
 
   case 116: /* specifier_qualifier_list: type_specifier  */
@@ -3507,7 +3368,7 @@ yyreduce:
 																		newlist->push_back((yyvsp[0].typsp));
 																		(yyval.sqlist) = newlist;
 																	}
-#line 3511 "ansic.tab.c"
+#line 3372 "ansic.tab.c"
     break;
 
   case 117: /* specifier_qualifier_list: type_qualifier specifier_qualifier_list  */
@@ -3517,7 +3378,7 @@ yyreduce:
 																		(yyval.sqlist) = (yyvsp[0].sqlist);
 																		(yyval.sqlist)->push_back((yyvsp[-1].qual));
 																	}
-#line 3521 "ansic.tab.c"
+#line 3382 "ansic.tab.c"
     break;
 
   case 118: /* specifier_qualifier_list: type_qualifier  */
@@ -3528,79 +3389,79 @@ yyreduce:
 																		newlist->push_back((yyvsp[0].qual));
 																		(yyval.sqlist) = newlist;
 																	}
-#line 3532 "ansic.tab.c"
+#line 3393 "ansic.tab.c"
     break;
 
   case 119: /* struct_declarator_list: struct_declarator  */
 #line 1337 "ansic.y"
                                                                                                                         {printf("struct_declarator_list: struct_declarator\n");}
-#line 3538 "ansic.tab.c"
+#line 3399 "ansic.tab.c"
     break;
 
   case 120: /* struct_declarator_list: struct_declarator_list ',' struct_declarator  */
 #line 1338 "ansic.y"
                                                                                         {printf("struct_declarator_list: struct_declarator_list ',' struct_declarator\n");}
-#line 3544 "ansic.tab.c"
+#line 3405 "ansic.tab.c"
     break;
 
   case 121: /* struct_declarator: declarator  */
 #line 1342 "ansic.y"
                                                                                 {printf("struct_declarator: declarator\n");}
-#line 3550 "ansic.tab.c"
+#line 3411 "ansic.tab.c"
     break;
 
   case 122: /* struct_declarator: ':' constant_expression  */
 #line 1343 "ansic.y"
                                                                         {printf("struct_declarator: ':' constant_expression\n");}
-#line 3556 "ansic.tab.c"
+#line 3417 "ansic.tab.c"
     break;
 
   case 123: /* struct_declarator: declarator ':' constant_expression  */
 #line 1344 "ansic.y"
                                                         {printf("struct_declarator: declarator ':' constant_expression\n");}
-#line 3562 "ansic.tab.c"
+#line 3423 "ansic.tab.c"
     break;
 
   case 124: /* enum_specifier: ENUM '{' enumerator_list '}'  */
 #line 1348 "ansic.y"
                                                                 {printf("enum_specifier: ENUM '{' enumerator_list '}'	\n");}
-#line 3568 "ansic.tab.c"
+#line 3429 "ansic.tab.c"
     break;
 
   case 125: /* enum_specifier: ENUM IDENTIFIER '{' enumerator_list '}'  */
 #line 1349 "ansic.y"
                                                         {printf("enum_specifier: ENUM IDENTIFIER '{' enumerator_list '}'\n");}
-#line 3574 "ansic.tab.c"
+#line 3435 "ansic.tab.c"
     break;
 
   case 126: /* enum_specifier: ENUM IDENTIFIER  */
 #line 1350 "ansic.y"
                                                                                 {printf("enum_specifier: ENUM IDENTIFIER\n");}
-#line 3580 "ansic.tab.c"
+#line 3441 "ansic.tab.c"
     break;
 
   case 127: /* enumerator_list: enumerator  */
 #line 1354 "ansic.y"
                                                                                 {printf("enumerator_list: enumerator\n");}
-#line 3586 "ansic.tab.c"
+#line 3447 "ansic.tab.c"
     break;
 
   case 128: /* enumerator_list: enumerator_list ',' enumerator  */
 #line 1355 "ansic.y"
                                                                 {printf("enumerator_list: enumerator_list ',' enumerator\n");}
-#line 3592 "ansic.tab.c"
+#line 3453 "ansic.tab.c"
     break;
 
   case 129: /* enumerator: IDENTIFIER  */
 #line 1359 "ansic.y"
                                                                                 {printf("enumerator: IDENTIFIER\n");}
-#line 3598 "ansic.tab.c"
+#line 3459 "ansic.tab.c"
     break;
 
   case 130: /* enumerator: IDENTIFIER '=' constant_expression  */
 #line 1360 "ansic.y"
                                                         {printf("enumerator: IDENTIFIER '=' constant_expression\n");}
-#line 3604 "ansic.tab.c"
+#line 3465 "ansic.tab.c"
     break;
 
   case 131: /* type_qualifier: CONST  */
@@ -3609,7 +3470,7 @@ yyreduce:
 						printf("type_qualifier: CONST\n");
 						(yyval.qual) = CONST_SPEC; 
 					}
-#line 3613 "ansic.tab.c"
+#line 3474 "ansic.tab.c"
     break;
 
   case 132: /* type_qualifier: VOLATILE  */
@@ -3618,7 +3479,7 @@ yyreduce:
 						printf("type_qualifier: VOLATILE\n");
 						(yyval.qual) = VOLATILE_SPEC;
 					}
-#line 3622 "ansic.tab.c"
+#line 3483 "ansic.tab.c"
     break;
 
   case 133: /* declarator: pointer direct_declarator  */
@@ -3629,7 +3490,7 @@ yyreduce:
 											(yyval.id_data)->plevel = (yyvsp[-1].pstruc).level;
 											(yyval.id_data)->typ |= POINTER_SPEC | (yyvsp[-1].pstruc).typq;	
 										}
-#line 3633 "ansic.tab.c"
+#line 3494 "ansic.tab.c"
     break;
 
   case 134: /* declarator: direct_declarator  */
@@ -3652,7 +3513,7 @@ yyreduce:
 												}
 											}
 										}
-#line 3656 "ansic.tab.c"
+#line 3517 "ansic.tab.c"
     break;
 
   case 135: /* direct_declarator: IDENTIFIER  */
@@ -3666,7 +3527,7 @@ yyreduce:
 															newsym->dimlist = nullptr;
 															(yyval.id_data) = newsym;
 														}
-#line 3670 "ansic.tab.c"
+#line 3531 "ansic.tab.c"
     break;
 
   case 136: /* direct_declarator: '(' declarator ')'  */
@@ -3675,7 +3536,7 @@ yyreduce:
 															printf("direct_declarator: '(' declarator ')'\n");
 
 														}
-#line 3679 "ansic.tab.c"
+#line 3540 "ansic.tab.c"
     break;
 
   case 137: /* direct_declarator: direct_declarator '[' constant_expression ']'  */
@@ -3692,7 +3553,7 @@ yyreduce:
 															(yyval.id_data)->dimlist->push_back((yyvsp[-1].sym).val.intval);
 															(yyval.id_data)->typ |= ARRAY_SPEC;	
 														}
-#line 3696 "ansic.tab.c"
+#line 3557 "ansic.tab.c"
     break;
 
   case 138: /* direct_declarator: direct_declarator '[' ']'  */
@@ -3705,7 +3566,7 @@ yyreduce:
 															(yyval.id_data)->dimlist->push_back(0);
 															(yyval.id_data)->typ |= ARRAY_SPEC;	
 														}
-#line 3709 "ansic.tab.c"
+#line 3570 "ansic.tab.c"
     break;
 
   case 139: /* direct_declarator: direct_declarator '(' parameter_type_list ')'  */
@@ -3717,13 +3578,13 @@ yyreduce:
 															(yyval.id_data)->arglist = (yyvsp[-1].idlist);
 															(yyval.id_data)->init = 0;
 														}
-#line 3721 "ansic.tab.c"
+#line 3582 "ansic.tab.c"
     break;
 
   case 140: /* direct_declarator: direct_declarator '(' identifier_list ')'  */
 #line 1442 "ansic.y"
                                                                         {printf("direct_declarator: direct_declarator '(' identifier_list ')'	\n");}
-#line 3727 "ansic.tab.c"
+#line 3588 "ansic.tab.c"
     break;
 
   case 141: /* direct_declarator: direct_declarator '(' ')'  */
@@ -3734,7 +3595,7 @@ yyreduce:
 															(yyval.id_data)->typ |= FUNC_SPEC;
 															(yyval.id_data)->init = 0;
 														}
-#line 3738 "ansic.tab.c"
+#line 3599 "ansic.tab.c"
     break;
 
   case 142: /* pointer: '*'  */
@@ -3744,7 +3605,7 @@ yyreduce:
 												(yyval.pstruc).typq = 0;
 												(yyval.pstruc).level = 1;
 											}
-#line 3748 "ansic.tab.c"
+#line 3609 "ansic.tab.c"
     break;
 
   case 143: /* pointer: '*' type_qualifier_list  */
@@ -3754,7 +3615,7 @@ yyreduce:
 												(yyval.pstruc).typq = (yyvsp[0].qual);
 												(yyval.pstruc).level = 1;	
 											}
-#line 3758 "ansic.tab.c"
+#line 3619 "ansic.tab.c"
     break;
 
   case 144: /* pointer: '*' pointer  */
@@ -3764,7 +3625,7 @@ yyreduce:
 												(yyval.pstruc) = (yyvsp[0].pstruc);
 												(yyval.pstruc).level++;	
 											}
-#line 3768 "ansic.tab.c"
+#line 3629 "ansic.tab.c"
     break;
 
   case 145: /* pointer: '*' type_qualifier_list pointer  */
@@ -3775,7 +3636,7 @@ yyreduce:
 												(yyval.pstruc).typq = (yyvsp[-1].qual);
 												(yyval.pstruc).level++;
 											}
-#line 3779 "ansic.tab.c"
+#line 3640 "ansic.tab.c"
     break;
 
   case 146: /* type_qualifier_list: type_qualifier  */
@@ -3784,7 +3645,7 @@ yyreduce:
 												printf("type_qualifier_list: type_qualifier\n");
 												(yyval.qual) = (yyvsp[0].qual);
 											}
-#line 3788 "ansic.tab.c"
+#line 3649 "ansic.tab.c"
     break;
 
   case 147: /* type_qualifier_list: type_qualifier_list type_qualifier  */
@@ -3793,7 +3654,7 @@ yyreduce:
 												(yyval.qual) = (yyvsp[-1].qual);
 												(yyval.qual) |= (yyvsp[0].qual);
 											}
-#line 3797 "ansic.tab.c"
+#line 3658 "ansic.tab.c"
     break;
 
   case 148: /* parameter_type_list: parameter_list  */
@@ -3802,13 +3663,13 @@ yyreduce:
 													printf("parameter_type_list: parameter_list\n");
 													(yyval.idlist) = (yyvsp[0].idlist);	
 												}
-#line 3806 "ansic.tab.c"
+#line 3667 "ansic.tab.c"
     break;
 
   case 149: /* parameter_type_list: parameter_list ',' ELLIPSIS  */
 #line 1491 "ansic.y"
                                                                 {printf("parameter_type_list: parameter_list ',' ELLIPSIS\n");}
-#line 3812 "ansic.tab.c"
+#line 3673 "ansic.tab.c"
     break;
 
   case 150: /* parameter_list: parameter_declaration  */
@@ -3821,7 +3682,7 @@ yyreduce:
 														newlist->push_back(newstruc);
 														(yyval.idlist) = newlist;
 													}
-#line 3825 "ansic.tab.c"
+#line 3686 "ansic.tab.c"
     break;
 
   case 151: /* parameter_list: parameter_list ',' parameter_declaration  */
@@ -3833,7 +3694,7 @@ yyreduce:
 														*newstruc = (yyvsp[0].sym);
 														(yyval.idlist)->push_back(newstruc);
 													}
-#line 3837 "ansic.tab.c"
+#line 3698 "ansic.tab.c"
     break;
 
   case 152: /* parameter_declaration: declaration_specifiers declarator  */
@@ -3846,19 +3707,19 @@ yyreduce:
 															else
 																(yyval.sym).typ = get_type((yyvsp[-1].sqlist)) | ARRAY_SPEC;
 														}
-#line 3850 "ansic.tab.c"
+#line 3711 "ansic.tab.c"
     break;
 
   case 153: /* parameter_declaration: declaration_specifiers abstract_declarator  */
 #line 1521 "ansic.y"
                                                                 {printf("parameter_declaration: declaration_specifiers abstract_declarator\n");}
-#line 3856 "ansic.tab.c"
+#line 3717 "ansic.tab.c"
     break;
 
   case 154: /* parameter_declaration: declaration_specifiers  */
 #line 1522 "ansic.y"
                                                                                         {printf("parameter_declaration: declaration_specifiers\n");}
-#line 3862 "ansic.tab.c"
+#line 3723 "ansic.tab.c"
     break;
 
   case 155: /* identifier_list: IDENTIFIER  */
@@ -3868,7 +3729,7 @@ yyreduce:
 													printf("identifier_list: IDENTIFIER");
 													cout << "<" << *name << ">" << "\n";	
 												}
-#line 3872 "ansic.tab.c"
+#line 3733 "ansic.tab.c"
     break;
 
   case 156: /* identifier_list: identifier_list ',' IDENTIFIER  */
@@ -3878,7 +3739,7 @@ yyreduce:
 													printf("identifier_list: identifier_list ',' IDENTIFIER");
 													cout << "<" << *name << ">" << "\n";
 												}
-#line 3882 "ansic.tab.c"
+#line 3743 "ansic.tab.c"
     break;
 
   case 157: /* type_name: specifier_qualifier_list  */
@@ -3887,85 +3748,85 @@ yyreduce:
 															printf("type_name: specifier_qualifier_list\n");
 															(yyval.typ) = get_type((yyvsp[0].sqlist));	
 														}
-#line 3891 "ansic.tab.c"
+#line 3752 "ansic.tab.c"
     break;
 
   case 158: /* type_name: specifier_qualifier_list abstract_declarator  */
 #line 1543 "ansic.y"
                                                                 {printf("type_name: specifier_qualifier_list abstract_declarator\n");}
-#line 3897 "ansic.tab.c"
+#line 3758 "ansic.tab.c"
     break;
 
   case 159: /* abstract_declarator: pointer  */
 #line 1547 "ansic.y"
                                                                                         {printf("abstract_declarator: pointer\n");}
-#line 3903 "ansic.tab.c"
+#line 3764 "ansic.tab.c"
     break;
 
   case 160: /* abstract_declarator: direct_abstract_declarator  */
 #line 1548 "ansic.y"
                                                                 {printf("abstract_declarator: direct_abstract_declarator\n");}
-#line 3909 "ansic.tab.c"
+#line 3770 "ansic.tab.c"
     break;
 
   case 161: /* abstract_declarator: pointer direct_abstract_declarator  */
 #line 1549 "ansic.y"
                                                         {printf("abstract_declarator: pointer direct_abstract_declarator\n");}
-#line 3915 "ansic.tab.c"
+#line 3776 "ansic.tab.c"
     break;
 
   case 162: /* direct_abstract_declarator: '(' abstract_declarator ')'  */
 #line 1553 "ansic.y"
                                                                                                         {printf("direct_abstract_declarator: '(' abstract_declarator ')'\n");}
-#line 3921 "ansic.tab.c"
+#line 3782 "ansic.tab.c"
     break;
 
   case 163: /* direct_abstract_declarator: '[' ']'  */
 #line 1554 "ansic.y"
                                                                                                                                 {printf("direct_abstract_declarator: '[' ']'\n");}
-#line 3927 "ansic.tab.c"
+#line 3788 "ansic.tab.c"
     break;
 
   case 164: /* direct_abstract_declarator: '[' constant_expression ']'  */
 #line 1555 "ansic.y"
                                                                                                         {printf("direct_abstract_declarator: '[' constant_expression ']'\n");}
-#line 3933 "ansic.tab.c"
+#line 3794 "ansic.tab.c"
     break;
 
   case 165: /* direct_abstract_declarator: direct_abstract_declarator '[' ']'  */
 #line 1556 "ansic.y"
                                                                                                 {printf("direct_abstract_declarator: direct_abstract_declarator '[' ']' \n");}
-#line 3939 "ansic.tab.c"
+#line 3800 "ansic.tab.c"
     break;
 
   case 166: /* direct_abstract_declarator: direct_abstract_declarator '[' constant_expression ']'  */
 #line 1557 "ansic.y"
                                                                                 {printf("direct_abstract_declarator: direct_abstract_declarator '[' constant_expression ']'\n");}
-#line 3945 "ansic.tab.c"
+#line 3806 "ansic.tab.c"
     break;
 
   case 167: /* direct_abstract_declarator: '(' ')'  */
 #line 1558 "ansic.y"
                                                                                                                                 {printf("direct_abstract_declarator: '(' ')'\n");}
-#line 3951 "ansic.tab.c"
+#line 3812 "ansic.tab.c"
     break;
 
   case 168: /* direct_abstract_declarator: '(' parameter_type_list ')'  */
 #line 1559 "ansic.y"
                                                                                                         {printf("direct_abstract_declarator: '(' parameter_type_list ')'\n");}
-#line 3957 "ansic.tab.c"
+#line 3818 "ansic.tab.c"
     break;
 
   case 169: /* direct_abstract_declarator: direct_abstract_declarator '(' ')'  */
 #line 1560 "ansic.y"
                                                                                                 {printf("direct_abstract_declarator: direct_abstract_declarator '(' ')'\n");}
-#line 3963 "ansic.tab.c"
+#line 3824 "ansic.tab.c"
     break;
 
   case 170: /* direct_abstract_declarator: direct_abstract_declarator '(' parameter_type_list ')'  */
 #line 1561 "ansic.y"
                                                                                 {printf("direct_abstract_declarator: direct_abstract_declarator '(' parameter_type_list ')'\n");}
-#line 3969 "ansic.tab.c"
+#line 3830 "ansic.tab.c"
     break;
 
   case 171: /* initializer: assignment_expression  */
@@ -3974,31 +3835,31 @@ yyreduce:
 												printf("initializer: assignment_expression\n");
 												(yyval.sym) = (yyvsp[0].sym);	
 											}
-#line 3978 "ansic.tab.c"
+#line 3839 "ansic.tab.c"
     break;
 
   case 172: /* initializer: '{' initializer_list '}'  */
 #line 1569 "ansic.y"
                                                                 {printf("initializer: '{' initializer_list '}'\n");}
-#line 3984 "ansic.tab.c"
+#line 3845 "ansic.tab.c"
     break;
 
   case 173: /* initializer: '{' initializer_list ',' '}'  */
 #line 1570 "ansic.y"
                                                         {printf("initializer: '{' initializer_list ',' '}'\n");}
-#line 3990 "ansic.tab.c"
+#line 3851 "ansic.tab.c"
     break;
 
   case 174: /* initializer_list: initializer  */
 #line 1574 "ansic.y"
                                                                         {printf("initializer_list: initializer\n");}
-#line 3996 "ansic.tab.c"
+#line 3857 "ansic.tab.c"
     break;
 
   case 175: /* initializer_list: initializer_list ',' initializer  */
 #line 1575 "ansic.y"
                                                         {printf("initializer_list: initializer_list ',' initializer\n");}
-#line 4002 "ansic.tab.c"
+#line 3863 "ansic.tab.c"
     break;
 
   case 177: /* statement: labeled_statement  */
@@ -4008,7 +3869,7 @@ yyreduce:
 									(yyval.lists) = (yyvsp[0].lists);
 									(yyval.lists).nextlist = NULL;
 								}
-#line 4012 "ansic.tab.c"
+#line 3873 "ansic.tab.c"
     break;
 
   case 178: /* $@2: %empty  */
@@ -4016,7 +3877,7 @@ yyreduce:
                                                         {
 									enter_scope();
 								}
-#line 4020 "ansic.tab.c"
+#line 3881 "ansic.tab.c"
     break;
 
   case 179: /* statement: P $@2 compound_statement  */
@@ -4027,7 +3888,7 @@ yyreduce:
 									exit_scope();
 									(yyval.lists) = (yyvsp[0].lists);
 								}
-#line 4031 "ansic.tab.c"
+#line 3892 "ansic.tab.c"
     break;
 
   case 180: /* statement: expression_statement  */
@@ -4040,7 +3901,7 @@ yyreduce:
 									(yyval.lists).gotolist = NULL;
 									(yyval.lists).caselist = NULL;	
 								}
-#line 4044 "ansic.tab.c"
+#line 3905 "ansic.tab.c"
     break;
 
   case 181: /* statement: selection_statement  */
@@ -4050,7 +3911,7 @@ yyreduce:
 									(yyval.lists) = (yyvsp[0].lists);
 									(yyval.lists).caselist = NULL;
 								}
-#line 4054 "ansic.tab.c"
+#line 3915 "ansic.tab.c"
     break;
 
   case 182: /* statement: iteration_statement  */
@@ -4060,7 +3921,7 @@ yyreduce:
 									(yyval.lists) = (yyvsp[0].lists);
 									(yyval.lists).caselist = NULL;
 								}
-#line 4064 "ansic.tab.c"
+#line 3925 "ansic.tab.c"
     break;
 
   case 183: /* statement: jump_statement  */
@@ -4070,7 +3931,7 @@ yyreduce:
 									(yyval.lists) = (yyvsp[0].lists);
 									(yyval.lists).caselist = NULL;
 								}
-#line 4074 "ansic.tab.c"
+#line 3935 "ansic.tab.c"
     break;
 
   case 184: /* N: %empty  */
@@ -4079,7 +3940,7 @@ yyreduce:
 									/* Retornar direccion de siguiente instruccion de IR */
 									(yyval.instr) = nextinstr;
 								}
-#line 4083 "ansic.tab.c"
+#line 3944 "ansic.tab.c"
     break;
 
   case 185: /* labeled_statement: IDENTIFIER ':' N statement  */
@@ -4093,7 +3954,7 @@ yyreduce:
 														(yyval.lists).gotolist = NULL;
 														(yyval.lists).caselist = NULL;
 													}
-#line 4097 "ansic.tab.c"
+#line 3958 "ansic.tab.c"
     break;
 
   case 186: /* labeled_statement: CASE constant_expression ':' N statement  */
@@ -4109,7 +3970,7 @@ yyreduce:
 															yyerror("Error: CASE espression must be integral constant\n");
 														(yyval.lists).caselist = makecaselist((yyvsp[-3].sym).val, (yyvsp[-3].sym).typ, (yyvsp[-1].instr));
 													}
-#line 4113 "ansic.tab.c"
+#line 3974 "ansic.tab.c"
     break;
 
   case 187: /* labeled_statement: DEFAULT ':' N statement  */
@@ -4121,7 +3982,7 @@ yyreduce:
 														(yyval.lists).gotolist = (yyvsp[0].lists).gotolist;
 														(yyval.lists).caselist = makecaselist((yyvsp[-1].instr));
 													}
-#line 4125 "ansic.tab.c"
+#line 3986 "ansic.tab.c"
     break;
 
   case 188: /* compound_statement: '{' '}'  */
@@ -4133,7 +3994,7 @@ yyreduce:
 														(yyval.lists).gotolist = NULL;
 														(yyval.lists).nextlist = NULL;
 													}
-#line 4137 "ansic.tab.c"
+#line 3998 "ansic.tab.c"
     break;
 
   case 189: /* compound_statement: '{' statement_list '}'  */
@@ -4142,7 +4003,7 @@ yyreduce:
 														printf("compound_statement: '{' statement_list '}'\n");
 														(yyval.lists) = (yyvsp[-1].lists);
 													}
-#line 4146 "ansic.tab.c"
+#line 4007 "ansic.tab.c"
     break;
 
   case 190: /* compound_statement: '{' declaration_list '}'  */
@@ -4154,7 +4015,7 @@ yyreduce:
 														(yyval.lists).gotolist = NULL;
 														(yyval.lists).nextlist = NULL;
 													}
-#line 4158 "ansic.tab.c"
+#line 4019 "ansic.tab.c"
     break;
 
   case 191: /* compound_statement: '{' declaration_list statement_list '}'  */
@@ -4163,19 +4024,19 @@ yyreduce:
 														printf("compound_statement: '{' declaration_list statement_list '}'\n");
 														(yyval.lists) = (yyvsp[-1].lists);
 													}
-#line 4167 "ansic.tab.c"
+#line 4028 "ansic.tab.c"
     break;
 
   case 192: /* declaration_list: declaration  */
 #line 1683 "ansic.y"
                                                                                         {printf("declaration_list: declaration\n");}
-#line 4173 "ansic.tab.c"
+#line 4034 "ansic.tab.c"
     break;
 
   case 193: /* declaration_list: declaration_list declaration  */
 #line 1684 "ansic.y"
                                                                         {printf("declaration_list: declaration_list declaration\n");}
-#line 4179 "ansic.tab.c"
+#line 4040 "ansic.tab.c"
     break;
 
   case 194: /* statement_list: statement  */
@@ -4184,7 +4045,7 @@ yyreduce:
 														printf("statement_list: statement\n");
 														(yyval.lists) = (yyvsp[0].lists);
 													}
-#line 4188 "ansic.tab.c"
+#line 4049 "ansic.tab.c"
     break;
 
   case 195: /* statement_list: statement_list N statement  */
@@ -4199,7 +4060,7 @@ yyreduce:
 														(yyval.lists).gotolist = merge((yyvsp[-2].lists).gotolist, (yyvsp[0].lists).gotolist);
 														(yyval.lists).caselist = merge((yyvsp[-2].lists).caselist, (yyvsp[0].lists).caselist);
 													}
-#line 4203 "ansic.tab.c"
+#line 4064 "ansic.tab.c"
     break;
 
   case 196: /* expression_statement: ';'  */
@@ -4209,7 +4070,7 @@ yyreduce:
 														(yyval.sym).truelist = nullptr;
 														(yyval.sym).falselist = nullptr;
 													}
-#line 4213 "ansic.tab.c"
+#line 4074 "ansic.tab.c"
     break;
 
   case 197: /* expression_statement: expression ';'  */
@@ -4218,7 +4079,7 @@ yyreduce:
 														printf("expression_statement: expression ';'\n");
 														(yyval.sym) = (yyvsp[-1].sym);
 													}
-#line 4222 "ansic.tab.c"
+#line 4083 "ansic.tab.c"
     break;
 
   case 198: /* logic_expression: expression  */
@@ -4238,7 +4099,7 @@ yyreduce:
 															gencode(GOTO_IR);
 														}
 													}
-#line 4242 "ansic.tab.c"
+#line 4103 "ansic.tab.c"
     break;
 
   case 199: /* selection_statement: IF '(' logic_expression ')' N statement  */
@@ -4251,7 +4112,7 @@ yyreduce:
 																		(yyval.lists).continuelist = (yyvsp[0].lists).continuelist;
 																		(yyval.lists).gotolist = (yyvsp[0].lists).gotolist;
 																	}
-#line 4255 "ansic.tab.c"
+#line 4116 "ansic.tab.c"
     break;
 
   case 200: /* selection_statement: IF '(' logic_expression ')' N statement ELSE M N statement  */
@@ -4265,7 +4126,7 @@ yyreduce:
 																		(yyval.lists).continuelist = merge((yyvsp[-4].lists).continuelist, (yyvsp[0].lists).continuelist);
 																		(yyval.lists).gotolist = merge((yyvsp[-4].lists).gotolist, (yyvsp[0].lists).gotolist);
 																	}
-#line 4269 "ansic.tab.c"
+#line 4130 "ansic.tab.c"
     break;
 
   case 201: /* selection_statement: SWITCH '(' expression ')' M statement  */
@@ -4310,7 +4171,7 @@ yyreduce:
 																		(yyval.lists).gotolist = (yyvsp[0].lists).gotolist;
 																		(yyval.lists).nextlist = NULL;
 																	}
-#line 4314 "ansic.tab.c"
+#line 4175 "ansic.tab.c"
     break;
 
   case 202: /* logic_expression_statement: expression_statement  */
@@ -4330,7 +4191,7 @@ yyreduce:
 																											gencode(GOTO_IR);
 																										}
 																									}
-#line 4334 "ansic.tab.c"
+#line 4195 "ansic.tab.c"
     break;
 
   case 203: /* iteration_statement: WHILE N '(' logic_expression ')' N statement  */
@@ -4347,7 +4208,7 @@ yyreduce:
 																										(yyval.lists).continuelist = NULL;
 																										(yyval.lists).gotolist = (yyvsp[0].lists).gotolist;
 																									}
-#line 4351 "ansic.tab.c"
+#line 4212 "ansic.tab.c"
     break;
 
   case 204: /* iteration_statement: DO N statement WHILE N '(' logic_expression ')' ';'  */
@@ -4363,7 +4224,7 @@ yyreduce:
 																										(yyval.lists).nextlist = (yyvsp[-2].sym).falselist;
 																										(yyval.lists).gotolist = (yyvsp[-6].lists).gotolist;
 																									}
-#line 4367 "ansic.tab.c"
+#line 4228 "ansic.tab.c"
     break;
 
   case 205: /* iteration_statement: FOR '(' expression_statement N logic_expression_statement N ')' statement  */
@@ -4380,7 +4241,7 @@ yyreduce:
 																										(yyval.lists).continuelist = NULL;
 																										(yyval.lists).gotolist = (yyvsp[0].lists).gotolist;
 																									}
-#line 4384 "ansic.tab.c"
+#line 4245 "ansic.tab.c"
     break;
 
   case 206: /* iteration_statement: FOR '(' expression_statement N logic_expression_statement N expression ')' M N statement  */
@@ -4398,7 +4259,7 @@ yyreduce:
 																										(yyval.lists).continuelist = NULL;
 																										(yyval.lists).gotolist = (yyvsp[0].lists).gotolist;
 																									}
-#line 4402 "ansic.tab.c"
+#line 4263 "ansic.tab.c"
     break;
 
   case 207: /* jump_statement: GOTO IDENTIFIER ';'  */
@@ -4412,7 +4273,7 @@ yyreduce:
 										(yyval.lists).gotolist = makelist(new string((yyvsp[-1].token.name)), nextinstr);
 										gencode(GOTO_IR);
 									}
-#line 4416 "ansic.tab.c"
+#line 4277 "ansic.tab.c"
     break;
 
   case 208: /* jump_statement: CONTINUE ';'  */
@@ -4426,7 +4287,7 @@ yyreduce:
 										(yyval.lists).continuelist = makelist(nextinstr);
 										gencode(GOTO_IR);
 									}
-#line 4430 "ansic.tab.c"
+#line 4291 "ansic.tab.c"
     break;
 
   case 209: /* jump_statement: BREAK ';'  */
@@ -4440,7 +4301,7 @@ yyreduce:
 										(yyval.lists).breaklist = makelist(nextinstr);
 										gencode(GOTO_IR);
 									}
-#line 4444 "ansic.tab.c"
+#line 4305 "ansic.tab.c"
     break;
 
   case 210: /* jump_statement: RETURN ';'  */
@@ -4454,7 +4315,7 @@ yyreduce:
 										(yyval.lists).caselist = NULL;
 										(yyval.lists).gotolist = NULL;
 									}
-#line 4458 "ansic.tab.c"
+#line 4319 "ansic.tab.c"
     break;
 
   case 211: /* jump_statement: RETURN expression ';'  */
@@ -4468,37 +4329,37 @@ yyreduce:
 										(yyval.lists).caselist = NULL;
 										(yyval.lists).gotolist = NULL;
 									}
-#line 4472 "ansic.tab.c"
+#line 4333 "ansic.tab.c"
     break;
 
   case 212: /* translation_unit: external_declaration  */
 #line 1907 "ansic.y"
                                                                                 {printf("translation_unit: external_declaration\n");}
-#line 4478 "ansic.tab.c"
+#line 4339 "ansic.tab.c"
     break;
 
   case 213: /* translation_unit: translation_unit external_declaration  */
 #line 1908 "ansic.y"
                                                                 {printf("translation_unit: translation_unit external_declaration\n");}
-#line 4484 "ansic.tab.c"
+#line 4345 "ansic.tab.c"
     break;
 
   case 214: /* external_declaration: function_definition  */
 #line 1912 "ansic.y"
                                                                                 {printf("external_declaration: function_definition\n");}
-#line 4490 "ansic.tab.c"
+#line 4351 "ansic.tab.c"
     break;
 
   case 215: /* external_declaration: declaration  */
 #line 1913 "ansic.y"
                                                                                         {printf("external_declaration: declaration\n");}
-#line 4496 "ansic.tab.c"
+#line 4357 "ansic.tab.c"
     break;
 
   case 216: /* function_definition: declaration_specifiers declarator declaration_list compound_statement  */
 #line 1917 "ansic.y"
                                                                                         {printf("function_definition: declaration_specifiers declarator declaration_list compound_statement\n");}
-#line 4502 "ansic.tab.c"
+#line 4363 "ansic.tab.c"
     break;
 
   case 217: /* $@3: %empty  */
@@ -4514,7 +4375,7 @@ yyreduce:
 																					lab_table.clear();
 																					setargs();
 																				}
-#line 4518 "ansic.tab.c"
+#line 4379 "ansic.tab.c"
     break;
 
   case 218: /* function_definition: declaration_specifiers declarator $@3 compound_statement  */
@@ -4527,13 +4388,13 @@ yyreduce:
 																					gencode(ENDPROC_IR, curr_func);
 																					patch_gotos((yyvsp[0].lists).gotolist);
 																				}
-#line 4531 "ansic.tab.c"
+#line 4392 "ansic.tab.c"
     break;
 
   case 219: /* function_definition: declarator declaration_list compound_statement  */
 #line 1939 "ansic.y"
                                                                                                                 {printf("function_definition: declarator declaration_list compound_statement\n");}
-#line 4537 "ansic.tab.c"
+#line 4398 "ansic.tab.c"
     break;
 
   case 220: /* $@4: %empty  */
@@ -4549,7 +4410,7 @@ yyreduce:
 																					lab_table.clear();
 																					setargs();
 																				}
-#line 4553 "ansic.tab.c"
+#line 4414 "ansic.tab.c"
     break;
 
   case 221: /* function_definition: declarator $@4 compound_statement  */
@@ -4562,11 +4423,11 @@ yyreduce:
 																					gencode(ENDPROC_IR, curr_func);
 																					patch_gotos((yyvsp[0].lists).gotolist);
 																				}
-#line 4566 "ansic.tab.c"
+#line 4427 "ansic.tab.c"
     break;
 
 
-#line 4570 "ansic.tab.c"
+#line 4431 "ansic.tab.c"
 
       default: break;
     }
@@ -4767,8 +4628,8 @@ int main(int argc, char *argv[])
 	string fname; /* Para guardar nombre de archivo compilandose */
 	/*Crear tabla de simbolos globales*/
 	sym_table = new symboltable();
-	cout << "Compilador de C version 1.0\n";
-	cout << "EQUIPO:5\nHinojosa Ruiz Zianya Samanta\nCoronilla Hernandez Emmanuel\nArriaga Saldaña Jonathan Esau\n\n";
+	cout << "Compilador de C";
+	cout << "Proyecto final\n\n";
 	if(argc>1)
 	{
 		yyin =fopen(argv[1], "r");
@@ -4776,7 +4637,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		cout << "Uso: " << argv[0] << " <filename>\n";
+		cout << "Uso incorrecto: " << argv[0] << " <filename>\n";
 		return(0);
 	}
 	yyparse();

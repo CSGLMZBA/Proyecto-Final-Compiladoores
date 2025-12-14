@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.5.1.  */
+/* A Bison parser, made by GNU Bison 3.8.2.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,8 +31,9 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* Undocumented macros, especially those whose name start with YY_,
-   are private implementation details.  Do not rely on them.  */
+/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
+   especially those whose name start with YY_ or yy_.  They are
+   private implementation details that can be changed or removed.  */
 
 #ifndef YY_YY_ANSIC_TAB_H_INCLUDED
 # define YY_YY_ANSIC_TAB_H_INCLUDED
@@ -44,71 +45,76 @@
 extern int yydebug;
 #endif
 
-/* Token type.  */
+/* Token kinds.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
   enum yytokentype
   {
-    IDENTIFIER = 258,
-    CONSTANT = 259,
-    STRING_LITERAL = 260,
-    SIZEOF = 261,
-    PTR_OP = 262,
-    INC_OP = 263,
-    DEC_OP = 264,
-    LEFT_OP = 265,
-    RIGHT_OP = 266,
-    LE_OP = 267,
-    GE_OP = 268,
-    EQ_OP = 269,
-    NE_OP = 270,
-    AND_OP = 271,
-    OR_OP = 272,
-    MUL_ASSIGN = 273,
-    DIV_ASSIGN = 274,
-    MOD_ASSIGN = 275,
-    ADD_ASSIGN = 276,
-    SUB_ASSIGN = 277,
-    LEFT_ASSIGN = 278,
-    RIGHT_ASSIGN = 279,
-    AND_ASSIGN = 280,
-    XOR_ASSIGN = 281,
-    OR_ASSIGN = 282,
-    TYPE_NAME = 283,
-    TYPEDEF = 284,
-    EXTERN = 285,
-    STATIC = 286,
-    AUTO = 287,
-    REGISTER = 288,
-    CHAR = 289,
-    SHORT = 290,
-    INT = 291,
-    LONG = 292,
-    SIGNED = 293,
-    UNSIGNED = 294,
-    FLOAT = 295,
-    DOUBLE = 296,
-    CONST = 297,
-    VOLATILE = 298,
-    VOID = 299,
-    STRUCT = 300,
-    UNION = 301,
-    ENUM = 302,
-    ELLIPSIS = 303,
-    CASE = 304,
-    DEFAULT = 305,
-    IF = 306,
-    ELSE = 307,
-    SWITCH = 308,
-    WHILE = 309,
-    DO = 310,
-    FOR = 311,
-    GOTO = 312,
-    CONTINUE = 313,
-    BREAK = 314,
-    RETURN = 315,
-    NO_ELSE = 316
+    YYEMPTY = -2,
+    YYEOF = 0,                     /* "end of file"  */
+    YYerror = 256,                 /* error  */
+    YYUNDEF = 257,                 /* "invalid token"  */
+    IDENTIFIER = 258,              /* IDENTIFIER  */
+    CONSTANT = 259,                /* CONSTANT  */
+    STRING_LITERAL = 260,          /* STRING_LITERAL  */
+    SIZEOF = 261,                  /* SIZEOF  */
+    PTR_OP = 262,                  /* PTR_OP  */
+    INC_OP = 263,                  /* INC_OP  */
+    DEC_OP = 264,                  /* DEC_OP  */
+    LEFT_OP = 265,                 /* LEFT_OP  */
+    RIGHT_OP = 266,                /* RIGHT_OP  */
+    LE_OP = 267,                   /* LE_OP  */
+    GE_OP = 268,                   /* GE_OP  */
+    EQ_OP = 269,                   /* EQ_OP  */
+    NE_OP = 270,                   /* NE_OP  */
+    AND_OP = 271,                  /* AND_OP  */
+    OR_OP = 272,                   /* OR_OP  */
+    MUL_ASSIGN = 273,              /* MUL_ASSIGN  */
+    DIV_ASSIGN = 274,              /* DIV_ASSIGN  */
+    MOD_ASSIGN = 275,              /* MOD_ASSIGN  */
+    ADD_ASSIGN = 276,              /* ADD_ASSIGN  */
+    SUB_ASSIGN = 277,              /* SUB_ASSIGN  */
+    LEFT_ASSIGN = 278,             /* LEFT_ASSIGN  */
+    RIGHT_ASSIGN = 279,            /* RIGHT_ASSIGN  */
+    AND_ASSIGN = 280,              /* AND_ASSIGN  */
+    XOR_ASSIGN = 281,              /* XOR_ASSIGN  */
+    OR_ASSIGN = 282,               /* OR_ASSIGN  */
+    TYPE_NAME = 283,               /* TYPE_NAME  */
+    TYPEDEF = 284,                 /* TYPEDEF  */
+    EXTERN = 285,                  /* EXTERN  */
+    STATIC = 286,                  /* STATIC  */
+    AUTO = 287,                    /* AUTO  */
+    REGISTER = 288,                /* REGISTER  */
+    CHAR = 289,                    /* CHAR  */
+    SHORT = 290,                   /* SHORT  */
+    INT = 291,                     /* INT  */
+    LONG = 292,                    /* LONG  */
+    SIGNED = 293,                  /* SIGNED  */
+    UNSIGNED = 294,                /* UNSIGNED  */
+    FLOAT = 295,                   /* FLOAT  */
+    DOUBLE = 296,                  /* DOUBLE  */
+    CONST = 297,                   /* CONST  */
+    VOLATILE = 298,                /* VOLATILE  */
+    VOID = 299,                    /* VOID  */
+    STRUCT = 300,                  /* STRUCT  */
+    UNION = 301,                   /* UNION  */
+    ENUM = 302,                    /* ENUM  */
+    ELLIPSIS = 303,                /* ELLIPSIS  */
+    CASE = 304,                    /* CASE  */
+    DEFAULT = 305,                 /* DEFAULT  */
+    IF = 306,                      /* IF  */
+    ELSE = 307,                    /* ELSE  */
+    SWITCH = 308,                  /* SWITCH  */
+    WHILE = 309,                   /* WHILE  */
+    DO = 310,                      /* DO  */
+    FOR = 311,                     /* FOR  */
+    GOTO = 312,                    /* GOTO  */
+    CONTINUE = 313,                /* CONTINUE  */
+    BREAK = 314,                   /* BREAK  */
+    RETURN = 315,                  /* RETURN  */
+    NO_ELSE = 316                  /* NO_ELSE  */
   };
+  typedef enum yytokentype yytoken_kind_t;
 #endif
 
 /* Value type.  */
@@ -151,7 +157,7 @@ union YYSTYPE
 		std::list<CASE_DATA *> *caselist;   /* Para saltos a los case de un switch */
 	}lists;
 
-#line 155 "ansic.tab.h"
+#line 161 "ansic.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -162,6 +168,8 @@ typedef union YYSTYPE YYSTYPE;
 
 extern YYSTYPE yylval;
 
+
 int yyparse (void);
+
 
 #endif /* !YY_YY_ANSIC_TAB_H_INCLUDED  */
